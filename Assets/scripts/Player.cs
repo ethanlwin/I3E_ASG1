@@ -101,8 +101,11 @@ public class Player: MonoBehaviour
     /// <summary>
     /// This line references the win portal script in order to inform the player which win portal its infront of
     /// </summary>
-    Win_portal win; 
-
+    Win_portal win;
+    /// <summary>
+    /// This line references the buff script in order to inform the player which buff its infront of
+    /// </summary>
+    Collectible_buff buff;
 
     //the text and image variables for the UI
     /// <summary>
@@ -302,6 +305,10 @@ public class Player: MonoBehaviour
             //since the game object has been collected it will be reupdated to null
             keyfraglvl2 = null;
         }
+        if (buff != null)
+        {
+            buff.Collected(this);
+        }
         //null check on the silver key crafting zone
         if (currentZone != null)
         {
@@ -394,6 +401,10 @@ public class Player: MonoBehaviour
     public void UpdateWinPortal(Win_portal newWinZone)
     {
         win = newWinZone;
+    }
+    public void UpdateBuff(Collectible_buff newbuff)
+    {
+        buff = newbuff;
     }
 
     // Start is called before the first frame update
